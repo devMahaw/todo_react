@@ -1,10 +1,15 @@
-import GlobalStyle from "./styles";
+import Sidebar from "./containers/sidebar";
+import TodoList from "./containers/todo_list";
+import GlobalStyle, { Container } from "./styles";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <h1>Olá React</h1>
+      <Container>
+        <Sidebar />
+        <TodoList />
+      </Container>
     </>
   );
 }
