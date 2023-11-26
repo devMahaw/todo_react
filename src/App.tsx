@@ -1,5 +1,5 @@
-import Sidebar from "./containers/sidebar";
-import TodoList from "./containers/todo_list";
+import Sidebar from "./containers/Sidebar";
+import TodoList from "./containers/TodoList";
 import GlobalStyle, { Container } from "./styles";
 
 function App() {
