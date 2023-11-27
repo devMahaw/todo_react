@@ -1,4 +1,22 @@
 import styled from "styled-components";
+import variables from "../../styles/variables";
+
+type TagProps = {
+  priority?: string;
+  status?: string;
+};
+
+function returnBackgroundColor(props: TagProps): string {
+  if ("status" in props) {
+    if (props.status === "Pendente") return variables.lightYellow;
+    if (props.status === "Concluída") return variables.green;
+  } else if ("priority" in props) {
+    if (props.priority === "Urgente") return variables.red;
+    if (props.priority === "Importante") return variables.darkYellow;
+  }
+
+  return "#ccc";
+}
 
 export const Card = styled.div`
   background-color: #fcfcfc;
@@ -14,12 +32,12 @@ export const Title = styled.h3`
   margin-bottom: 16px;
 `;
 
-export const Tag = styled.span`
+export const Tag = styled.span<TagProps>`
   padding: 4px 8px;
   font-size: 12px;
   font-weight: bold;
   color: #fff;
-  background-color: #e1a32a;
+  background-color: ${(props) => returnBackgroundColor(props)};
   border-radius: 8px;
   margin-right: 16px;
   display: inline-block;
@@ -35,7 +53,7 @@ export const Description = styled.textarea`
   margin: 16px 0px;
   resize: none;
   border: none;
-  background: transparent;
+  background-color: transparent;
 `;
 
 export const ActionBar = styled.div`
@@ -53,4 +71,16 @@ export const Button = styled.button`
   background-color: #2f3640;
   border-radius: 8px;
   margin-right: 8px;
+`;
+
+export const SaveButton = styled(Button)`
+  background-color: ${variables.green};
+`;
+
+export const CancelButton = styled(Button)`
+  background-color: ${variables.red};
+`;
+
+export const RemoveButton = styled(Button)`
+  background-color: ${variables.red};
 `;
