@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import variables from "../../styles/variables";
 
-import * as enums from "../../utils/enums/tasks";
+import * as enums from "../../utils/enums/task";
 
 type TagProps = {
   priority?: enums.Priority;

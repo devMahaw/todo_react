@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { useState } from "react";
-import * as enums from "../../utils/enums/tasks";
+import * as enums from "../../utils/enums/task";
 
 type Props = {
   title: string;
