@@ -4,7 +4,7 @@ import { Container } from "./styles";
 import { RootReducer } from "../../store";
 
 const TodoList = () => {
-  const { tasks } = useSelector((state: RootReducer) => state);
+  const { items } = useSelector((state: RootReducer) => state.tasks);
 
   return (
     <Container>
@@ -12,9 +12,10 @@ const TodoList = () => {
         2 tarefas marcadas como: &quot;categoria&ldquo; e &quot;termo&ldquo;
       </p>
       <ul>
-        {tasks.map((task) => (
+        {items.map((task) => (
           <li key={task.title}>
             <Task
+              id={task.id}
               description={task.description}
               priority={task.priority}
               title={task.title}
