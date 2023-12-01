@@ -5,12 +5,27 @@ import { RootReducer } from "../../store";
 
 const TodoList = () => {
   const { items } = useSelector((state: RootReducer) => state.tasks);
-  const { term } = useSelector((state: RootReducer) => state.filter);
+  const { term, criterion, value } = useSelector(
+    (state: RootReducer) => state.filter
+  );
 
   const filterTasks = () => {
-    return items.filter(
-      (item) => item.title.toLowerCase().search(term.toLowerCase()) >= 0
-    );
+    let filteredTasks = items;
+    if (term !== undefined) {
+      filteredTasks = filteredTasks.filter(
+        (item) => item.title.toLowerCase().search(term.toLowerCase()) >= 0
+      );
+
+      if (criterion === "priority") {
+        filteredTasks = filteredTasks.filter((item) => item.priority === value);
+      } else if (criterion === "status") {
+        filteredTasks = filteredTasks.filter((item) => item.status === value);
+      }
+
+      return filteredTasks;
+    } else {
+      return items;
+    }
   };
 
   return (

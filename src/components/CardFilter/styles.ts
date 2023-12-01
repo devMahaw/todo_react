@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-import { Props } from ".";
+type Props = {
+  active: boolean;
+};
 
-type PropsWithoutSubtitleAndCounter = Omit<Props, "counter" | "subtitle">;
-
-export const Card = styled.div<PropsWithoutSubtitleAndCounter>`
+export const Card = styled.div<Props>`
   padding: 8px;
   border: 1px solid ${(props) => (props.active ? "#1e90ff" : "#a1a1a1")};
   background-color: ${(props) => (props.active ? "#fff" : "#fcfcfc")};
