@@ -5,7 +5,6 @@ import { MainContainer, SaveButton, Title } from "../../styles/index";
 import { TextField } from "../../styles/index";
 import { Form as FormStyle, Options, Option } from "./styles";
 import * as enums from "../../utils/enums/task";
-import Task from "../../models/Task";
 import { register } from "../../store/reducers/tasks";
 
 const Form = () => {
@@ -18,15 +17,14 @@ const Form = () => {
   const registerTask = (event: FormEvent) => {
     event.preventDefault();
 
-    const taskForAdd = new Task(
-      title,
-      priority,
-      enums.Status.PENDENTE,
-      description,
-      9
+    dispatch(
+      register({
+        title,
+        priority,
+        status: enums.Status.PENDENTE,
+        description
+      })
     );
-
-    dispatch(register(taskForAdd));
     navigate("/");
   };
 

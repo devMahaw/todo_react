@@ -48,7 +48,7 @@ const tasksSlice = createSlice({
         state.items[taskIndex] = action.payload;
       }
     },
-    register: (state, action: PayloadAction<Task>) => {
+    register: (state, action: PayloadAction<Omit<Task, "id">>) => {
       const taskAlreadyExists = state.items.find(
         (task) =>
           task.title.toLowerCase() === action.payload.title.toLowerCase()
@@ -57,12 +57,31 @@ const tasksSlice = createSlice({
       if (taskAlreadyExists) {
         alert("Já existe uma tarefa com esse nome");
       } else {
-        state.items.push(action.payload);
+        const lastTask = state.items[state.items.length - 1];
+        const newTask = {
+          ...action.payload,
+          id: lastTask ? lastTask.id + 1 : 1
+        };
+        state.items.push(newTask);
+      }
+    },
+    changeStatus: (
+      state,
+      action: PayloadAction<{ id: number; finished: boolean }>
+    ) => {
+      const taskIndex = state.items.findIndex(
+        (t) => t.id === action.payload.id
+      );
+
+      if (taskIndex >= 0) {
+        state.items[taskIndex].status = action.payload.finished
+          ? enums.Status.CONCLUIDA
+          : enums.Status.PENDENTE;
       }
     }
   }
 });
 
-export const { remove, edit, register } = tasksSlice.actions;
+export const { remove, edit, register, changeStatus } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
