@@ -47,10 +47,22 @@ const tasksSlice = createSlice({
       if (taskIndex >= 0) {
         state.items[taskIndex] = action.payload;
       }
+    },
+    register: (state, action: PayloadAction<Task>) => {
+      const taskAlreadyExists = state.items.find(
+        (task) =>
+          task.title.toLowerCase() === action.payload.title.toLowerCase()
+      );
+
+      if (taskAlreadyExists) {
+        alert("Já existe uma tarefa com esse nome");
+      } else {
+        state.items.push(action.payload);
+      }
     }
   }
 });
 
-export const { remove, edit } = tasksSlice.actions;
+export const { remove, edit, register } = tasksSlice.actions;
 
 export default tasksSlice.reducer;

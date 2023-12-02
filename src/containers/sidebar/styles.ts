@@ -12,15 +12,3 @@ export const Filters = styled.div`
   gap: 8px;
   margin-top: 16px;
 `;
-
-export const Search = styled.input`
-  padding: 8px;
-  background-color: #fff;
-  border-radius: 8px;
-  font-weight: bold;
-  color: #666666;
-  border-color: #a1a1a1;
-  width: 100%;
-  font-size: 16px;
-  outline: none;
-`;

@@ -5,6 +5,7 @@ import * as S from "./styles";
 import { RootReducer } from "../../store";
 import { changeTerm } from "../../store/reducers/filter";
 import * as enums from "../../utils/enums/task";
+import { TextField } from "../../styles/index";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const Sidebar = () => {
   return (
     <S.Aside>
       <div>
-        <S.Search
+        <TextField
           type="text"
           placeholder="Buscar"
           value={term}
