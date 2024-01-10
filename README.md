@@ -21,4 +21,5 @@ Nesse projeto há uma to-do list com várias funcionalidades. Há uma sidebar qu
 - EditorConfig
 - Typescript
 - Redux
+- Bibliotecas React
 - React Router
