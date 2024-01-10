@@ -22,4 +22,4 @@ Nesse projeto há uma to-do list com várias funcionalidades. Há uma sidebar qu
 - Typescript
 - Redux
 - Bibliotecas React
-- React Router
+- React App
